@@ -9,36 +9,32 @@ public class Main {
         String[] arrayStringSplit = arrayString.split(" ");
 
         int[] array = new int[arrayStringSplit.length];
-        for(int i = 0; i<arrayStringSplit.length; i++ )
+        for (int i = 0; i < arrayStringSplit.length; i++)
         {
-            array[i]=Integer.parseInt(arrayStringSplit[i]);
+            array[i] = Integer.parseInt(arrayStringSplit[i]);
         }
 
-        for(int i = array.length-1; i>0; i--)
+        int c = 0;
+        int step = array.length - 1;
+        while (step>=1)
         {
-            for(int j = array.length-1-i; j<i;j++)
-            {
-                if(array[j]>array[j+1])
-                {
-                    int c = array[j];
-                    array[j] = array[j+1];
-                    array[j+1] = c;
-                }
-            }
 
-            for(int j = i-1; j>0;j--)
+            for (int j = 0; j < array.length - step; j++)
             {
-                if(array[j]<array[j-1])
+                if(array[j]>array[j + step])
                 {
-                    int c = array[j];
-                    array[j] = array[j-1];
-                    array[j-1] = c;
+                    c = array[j];
+                    array[j] = array[j + step];
+                    array[j + step] = c;
                 }
             }
+            step = (int) Math.floor(step / 1.247);
         }
 
-        for (int j : array) {
+        for (int j : array)
+        {
             System.out.print(j + " ");
         }
+
     }
 }
